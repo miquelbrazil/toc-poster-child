@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+use App\Command\PublishPostsCommand;
+
+$dotenv = Dotenv\Dotenv::createUnsafeImmutable(dirname(__DIR__));
+$dotenv->load();
+
+$app = new Application('Poster Child CLI', 'v1.0.0');
+$app->add(new PublishPostsCommand());
+$app->run();
